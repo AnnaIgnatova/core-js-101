@@ -116,49 +116,81 @@ function fromJSON(proto, json) {
 
 // const cssSelectorBuilder = {
 //   stack: [],
-//   stringify(value) {
-//     this.stack.push(value);
-//     return this.stack.reduce((acc, val) => acc + val, '');
+//   stringify() {
+//     const stackCopy = this.stack;
+//     this.clearStack();
+//     console.log(stackCopy.reduce((acc, val) => acc + val, ''));
+//     return stackCopy.reduce((acc, val) => acc + val, '');
+//   },
+//   setStack(value) {
+//     this.stack = [...this.stack, value];
+//   },
+//   clearStack() {
+//     this.stack = [];
 //   },
 //   element(value) {
-//     const func = this.stringify(value);
+//     this.setStack(value);
+//     const func = this.stringify();
 //     return {
-//       stringify: func,
+//       stack: this.stack,
+//       stringify() {
+//         return func;
+//       },
 //     };
 //   },
 
 //   id(value) {
-//     const func = this.stringify(value);
+//     this.setStack(`#${value}`);
+//     const func = this.stringify();
 //     return {
-//       stringify: func,
+//       stack: this.stack,
+//       stringify() {
+//         return func;
+//       },
 //     };
 //   },
 
 //   class(value) {
-//     const func = this.stringify(value);
+//     this.setStack(`.${value}`);
+//     const func = this.stringify();
 //     return {
-//       stringify: func,
+//       stack: this.stack,
+//       stringify() {
+//         return func;
+//       },
 //     };
 //   },
 
 //   attr(value) {
-//     const func = this.stringify(value);
+//     this.setStack(`[${value}]`);
+//     const func = this.stringify();
 //     return {
-//       stringify: func,
+//       stack: this.stack,
+//       stringify() {
+//         return func;
+//       },
 //     };
 //   },
 
 //   pseudoClass(value) {
-//     const func = this.stringify(value);
+//     this.setStack(`:${value}`);
+//     const func = this.stringify();
 //     return {
-//       stringify: func,
+//       stack: this.stack,
+//       stringify() {
+//         return func;
+//       },
 //     };
 //   },
 
 //   pseudoElement(value) {
-//     const func = this.stringify(value);
+//     this.setStack(`::${value}`);
+//     const func = this.stringify();
 //     return {
-//       stringify: func,
+//       stack: this.stack,
+//       stringify() {
+//         return func;
+//       },
 //     };
 //   },
 
